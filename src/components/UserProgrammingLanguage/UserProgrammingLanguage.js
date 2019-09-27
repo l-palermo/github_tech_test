@@ -7,10 +7,10 @@ class UserProgrammingLanguage extends React.Component {
     this.state = {
       userName: ''
     }
-    this.onHandleSubmit = this.onHandleSubmit.bind(this);
+    this.onHandleSubmitName = this.onHandleSubmitName.bind(this);
   }
 
-  onHandleSubmit(event) {
+  onHandleSubmitName(event) {
     let name = event.target[0].value;
     this.setState({ userName: name })
   }
@@ -18,7 +18,9 @@ class UserProgrammingLanguage extends React.Component {
   render() {
     return(
       <div>
-        <SearchBar />
+        <SearchBar
+        onHandleSubmitName={this.onHandleSubmitName}
+        />
       </div>
     )
   }

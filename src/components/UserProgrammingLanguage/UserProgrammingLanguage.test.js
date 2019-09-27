@@ -11,7 +11,7 @@ describe('UserProgrammingLanguage', () => {
   it('hold the user\'s name as state', () => {
     const instance = wrapper.instance()
     const eventMock = {target: [{value:'test'}] }
-    instance.onHandleSubmit(eventMock);
+    instance.onHandleSubmitName(eventMock);
     expect(wrapper.state('userName')).toEqual('test');
   });
 

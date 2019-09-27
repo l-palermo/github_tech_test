@@ -18,3 +18,14 @@ describe('form', () => {
     expect(submitButton).toHaveLength(1)
   })
 })
+
+describe('handleSubmitName', () => {
+  it('pass the event to the parent component', () => {
+    const onHandleSubmitNameMock = jest.fn()
+    const wrapper = shallow(<SearchBar onHandleSubmitName={onHandleSubmitNameMock} />)
+    const eventMock = {preventDefault:function(){}}
+    const submitForm = wrapper.find('form')
+    submitForm.simulate('submit', eventMock)
+    expect(onHandleSubmitNameMock).toHaveBeenCalled();
+  })
+})

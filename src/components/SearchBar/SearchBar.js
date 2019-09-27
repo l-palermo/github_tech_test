@@ -1,12 +1,17 @@
 import React from 'react';
 
 function SearchBar(props) {
+
+  const handleSubmitName = (event) => {
+    props.onHandleSubmitName(event)
+    event.preventDefault();
+  };
  
   return(
-    <form >
+    <form onSubmit={handleSubmitName}>
       <label>
         Name:
-        <input id='user-name' type='text' placeholder='Insert user name' />
+        <input id='user-name' type='text' value={props.name} placeholder='Insert user name' />
         <input id='submit-name' type='submit' value='Submit' />
       </label>
     </form>
