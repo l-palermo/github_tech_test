@@ -4,9 +4,9 @@ import SearchBar from './SearchBar';
 let wrapper;
 beforeEach(() => {
   wrapper = shallow(<SearchBar />)
-})
+});
 
-describe('form', () => {
+describe('SearchBar', () => {
 
   it('renders an input box', () => {
     const inputBox = wrapper.find({ id:'user-name' })
@@ -16,8 +16,8 @@ describe('form', () => {
   it('renders a submit button', () => {
     const submitButton = wrapper.find({ id:'submit-name' })
     expect(submitButton).toHaveLength(1)
-  })
-})
+  });
+});
 
 describe('handleSubmitName', () => {
   it('pass the event to the parent component', () => {
@@ -27,5 +27,5 @@ describe('handleSubmitName', () => {
     const submitForm = wrapper.find('form')
     submitForm.simulate('submit', eventMock)
     expect(onHandleSubmitNameMock).toHaveBeenCalled();
-  })
-})
+  });
+});

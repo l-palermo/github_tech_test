@@ -15,7 +15,7 @@ function SearchBar(props) {
         <input id='submit-name' type='submit' value='Submit' />
       </label>
     </form>
-  )
-}
+  );
+};
 
 export default SearchBar;
