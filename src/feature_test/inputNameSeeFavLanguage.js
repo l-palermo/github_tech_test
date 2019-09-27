@@ -1,7 +1,7 @@
 import '../setupTest.js'
 
 describe('F.P.L', () => {
-  it('The user input a user\'s name and see the user favourite language', () => {
+  it('The user input a user\'s name and see the user favourite language', async() => {
     const browser = await puppeteer.launch({});
     const page = await browser.newPage();
     await page.goto('http://localhost:3000/');
