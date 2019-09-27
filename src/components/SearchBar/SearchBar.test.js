@@ -2,7 +2,7 @@ import '../../testHelper';
 import SearchBar from './SearchBar';
 
 let wrapper;
-beforeEach( () => {
+beforeEach(() => {
   wrapper = shallow(<SearchBar />)
 })
 

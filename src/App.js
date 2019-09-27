@@ -1,9 +1,9 @@
 import React from 'react';
-import SearchBar from './components/SearchBar/SearchBar';
+import UserProgrammingLanguage from './components/UserProgrammingLanguage/UserProgrammingLanguage';
 
 function App() {
   return (
-    <SearchBar />
+    <UserProgrammingLanguage />
   );
 }
 
