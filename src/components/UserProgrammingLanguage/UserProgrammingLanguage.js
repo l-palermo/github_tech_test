@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchBar from '../SearchBar/SearchBar';
+import FavouriteLanguage from '../FavouriteLanguage/FavouriteLanguage';
 
 class UserProgrammingLanguage extends React.Component {
   constructor(props) {
@@ -18,9 +19,14 @@ class UserProgrammingLanguage extends React.Component {
   render() {
     return(
       <div>
+      <div>
         <SearchBar
         onHandleSubmitName={this.onHandleSubmitName}
         />
+      </div>
+      <div>
+        <FavouriteLanguage />
+      </div>
       </div>
     )
   }

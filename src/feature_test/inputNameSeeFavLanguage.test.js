@@ -1,4 +1,4 @@
-import '../setupTest.js'
+import '../testHelper'
 
 describe('F.P.L', () => {
   it('The user input a user\'s name and see the user favourite language', async() => {
