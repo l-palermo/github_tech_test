@@ -1,9 +1,9 @@
 import '../../testHelper';
-import InputForm from './InputForm';
+import SearchBar from './SearchBar';
 
 let wrapper;
 beforeEach( () => {
-  wrapper = shallow(<InputForm />)
+  wrapper = shallow(<SearchBar />)
 })
 
 describe('form', () => {

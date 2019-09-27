@@ -1,9 +1,9 @@
 import React from 'react';
-import InputForm from './components/InputForm/InputForm';
+import SearchBar from './components/SearchBar/SearchBar';
 
 function App() {
   return (
-    <InputForm />
+    <SearchBar />
   );
 }
 
