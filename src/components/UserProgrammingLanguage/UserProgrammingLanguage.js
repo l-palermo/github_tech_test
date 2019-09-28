@@ -6,26 +6,35 @@ class UserProgrammingLanguage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: ''
+      userName: '',
+      repos: ''
     }
-    this.onHandleSubmitName = this.onHandleSubmitName.bind(this);
+    this.onHandleChangeName = this.onHandleChangeName.bind(this);
+    this.onHandleFetchRepos = this.onHandleFetchRepos.bind(this);
   }
 
-  onHandleSubmitName(event) {
-    let name = event.target[0].value;
-    this.setState({ userName: name })
-  }
+  onHandleChangeName(event) {
+    let name = event.target.value;
+    this.setState({ userName: name });
+  };
+
+  async onHandleFetchRepos() {
+    let repos = await this.props.fetchUserRepos(this.state.userName);
+    this.setState({ repos: repos });
+  };
 
   render() {
     return(
       <div>
       <div>
         <SearchBar
-        onHandleSubmitName={this.onHandleSubmitName}
+        onHandleChangeName={this.onHandleChangeName}
+        onHandleFetchRepos={this.onHandleFetchRepos}
         />
       </div>
       <div>
-        <FavouriteLanguage />
+        <FavouriteLanguage 
+        data={this.state.repos}/>
       </div>
       </div>
     )

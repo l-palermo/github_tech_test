@@ -10,6 +10,8 @@ export default async function fetchUserRepos(userName) {
     const userRepos = await fetch(reposURL)
     .then(promise => {
       return promise.json();
+    }).then(data => {
+      return data
     })
     return await userRepos;
   } catch (err) {

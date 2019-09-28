@@ -2,19 +2,30 @@ import React from 'react';
 
 function SearchBar(props) {
 
-  const handleSubmitName = (event) => {
-    props.onHandleSubmitName(event)
-    event.preventDefault();
+  const handleChangeName = (event) => {
+    props.onHandleChangeName(event)
+  };
+
+  const handleFetchRepos = () => {
+    props.onHandleFetchRepos();
   };
  
   return(
-    <form onSubmit={handleSubmitName}>
-      <label>
-        Name:
-        <input id='user-name' type='text' value={props.name} placeholder='Insert user name' />
-        <input id='submit-name' type='submit' value='Submit' />
-      </label>
-    </form>
+    <label>
+      Name:
+      <input 
+        id='user-name' 
+        type='text' 
+        value={props.name} 
+        placeholder='Insert user name' 
+        onChange={handleChangeName} />
+      <button 
+        id='submit-name' 
+        type='submit' 
+        onClick={handleFetchRepos}>
+        Submit
+      </button>
+    </label>
   );
 };
 
