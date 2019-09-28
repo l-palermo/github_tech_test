@@ -6,8 +6,8 @@ describe('findLanguage', () => {
     var listReposMock = [{language: 'ruby'}, {language: 'ruby'}, {language: 'javascript'}]
     expect(languagesRate(listReposMock)).toEqual({javascript: 1, ruby: 2})
   });
-  it('ignores the language if it results undefined', () => {
-    var listReposMock = [{language: 'ruby'}, {language: 'ruby'}, {language: 'javascript'}, {language: undefined}]
+  it('ignores the language if it results null', () => {
+    var listReposMock = [{language: 'ruby'}, {language: 'ruby'}, {language: 'javascript'}, {language: null}]
     expect(languagesRate(listReposMock)).toEqual({javascript: 1, ruby: 2})
   })
 })

@@ -1,13 +1,15 @@
 import React from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import FavouriteLanguage from '../FavouriteLanguage/FavouriteLanguage';
+import languagesRate from '../../modules/languagesRate/languagesRate';
+import selectLanguage from '../../modules/selectLanguage/selectLanguage';
 
 class UserProgrammingLanguage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       userName: '',
-      repos: ''
+      repos: []
     }
     this.onHandleChangeName = this.onHandleChangeName.bind(this);
     this.onHandleFetchRepos = this.onHandleFetchRepos.bind(this);
@@ -33,8 +35,13 @@ class UserProgrammingLanguage extends React.Component {
         />
       </div>
       <div>
+      {this.state.repos.length > 0 &&
         <FavouriteLanguage 
-        data={this.state.repos}/>
+        repos={this.state.repos}
+        languagesRate={languagesRate}
+        selectLanguage={selectLanguage}
+        />
+      }
       </div>
       </div>
     )

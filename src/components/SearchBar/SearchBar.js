@@ -6,7 +6,7 @@ function SearchBar(props) {
     props.onHandleChangeName(event)
   };
 
-  const handleFetchRepos = () => {
+  const handleFetchRepos = (event) => {
     props.onHandleFetchRepos();
   };
  

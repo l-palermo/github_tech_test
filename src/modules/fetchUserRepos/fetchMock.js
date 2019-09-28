@@ -3,10 +3,7 @@ export default function() {
     json: () => 
     Promise.resolve(
       {items: 
-        [
-        { repo: 'test'},
-        { repo: 'newtest' }
-        ]
+        [{repos_url: 'https://api.github.com/users/test/repos'}]
       }
     )
   });
