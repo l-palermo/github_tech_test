@@ -2,7 +2,7 @@ import React from 'react';
 
 function FavouriteLanguage(props) {
 
-  const language = 'JavaScript';
+  const language = 'JavaScript'
 
   return(
     <div id='favourite-langauge'>
