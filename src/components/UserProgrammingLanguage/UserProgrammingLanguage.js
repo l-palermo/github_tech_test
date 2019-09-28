@@ -9,43 +9,48 @@ class UserProgrammingLanguage extends React.Component {
     super(props);
     this.state = {
       userName: '',
-      repos: []
-    }
+      repos: [],
+    };
     this.onHandleChangeName = this.onHandleChangeName.bind(this);
     this.onHandleFetchRepos = this.onHandleFetchRepos.bind(this);
   }
 
   onHandleChangeName(event) {
-    let name = event.target.value;
+    const name = event.target.value;
     this.setState({ userName: name });
-  };
+  }
 
   async onHandleFetchRepos() {
-    let repos = await this.props.fetchUserRepos(this.state.userName);
-    this.setState({ repos: repos });
-  };
+    const repos = await this.props.fetchUserRepos(this.state.userName);
+    if(repos.length === 0) { return this.setState({ repos: '' }) }
+    this.setState({ repos });
+  }
 
   render() {
-    return(
+    return (
       <div>
-      <div>
-        <SearchBar
-        onHandleChangeName={this.onHandleChangeName}
-        onHandleFetchRepos={this.onHandleFetchRepos}
+        <div>
+          <SearchBar
+            onHandleChangeName={this.onHandleChangeName}
+            onHandleFetchRepos={this.onHandleFetchRepos}
+          />
+        </div>
+        <div>
+         {this.state.repos === '' &&
+          <p>The user has no repos</p>
+         }
+          {this.state.repos.length > 0
+        && (
+        <FavouriteLanguage
+          repos={this.state.repos}
+          languagesRate={languagesRate}
+          selectLanguage={selectLanguage}
         />
+        )}
+        </div>
       </div>
-      <div>
-      {this.state.repos.length > 0 &&
-        <FavouriteLanguage 
-        repos={this.state.repos}
-        languagesRate={languagesRate}
-        selectLanguage={selectLanguage}
-        />
-      }
-      </div>
-      </div>
-    )
+    );
   }
-};
+}
 
 export default UserProgrammingLanguage;

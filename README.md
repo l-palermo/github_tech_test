@@ -13,7 +13,23 @@ The application is built in React following the principles of:
 
 ## How to install the app
 
+Move to the `TECH_TEST` folder and type:
+
+`npm install` Installs the dependencies
+
+`npm start`   Runs the 
+
+`npm test`    Runs the test and the test coverage
+
 ## How to use the software
 
+One fired the server move to the webpage and type the GitHub user name and click `Submit`
+The page will show the predominat programming language of the GitHub user.
+The application shows an helpful message in case of:
+- user has no language in the repositories.
+- user has no repositories. 
+
 ## Approach & Considerations
+
+
 

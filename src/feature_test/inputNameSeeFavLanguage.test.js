@@ -1,36 +1,36 @@
-import '../testHelper'
-import fetch from '../modules/fetchUserRepos/fetchMock'
+import '../testHelper';
+import fetch from '../modules/fetchUserRepos/fetchMock';
 
 describe('F.P.L', () => {
-  it('The user input a user\'s name and see the user favourite language', async() => {
+  it('The user input a user\'s name and see the user favourite language', async () => {
     const browser = await puppeteer.launch({});
     const page = await browser.newPage();
     await page.goto('http://localhost:3000/');
     await page.waitForSelector('#user-name');
     await page.type('#user-name', 'test');
     await page.setRequestInterception(true);
-    await page.on('request', request => {
-      var url = request.url();
-      if(request.resourceType(fetch)) {
+    await page.on('request', (request) => {
+      const url = request.url();
+      if (request.resourceType(fetch)) {
         if (url === 'https://api.github.com/search/users?q=test') {
           request.respond({
             body: JSON.stringify(
-              { items: [{repos_url: 'https://api.github.com/users/test/repos'}]}
-            )
-          })
-        } else if(url === 'https://api.github.com/users/test/repos') {
+              { items: [{ repos_url: 'https://api.github.com/users/test/repos' }] },
+            ),
+          });
+        } else if (url === 'https://api.github.com/users/test/repos') {
           request.respond({
             body: JSON.stringify(
-              [{language: 'ruby'}, {language: 'javascript'}, {language: 'javascript'}]
-            )
-          })
+              [{ language: 'ruby' }, { language: 'javascript' }, { language: 'javascript' }],
+            ),
+          });
         }
       }
     });
     await page.click('#submit-name');
     await page.waitForSelector('#favourite-langauge');
-    const found = await page.evaluate(() => window.find('javascript'))
+    const found = await page.evaluate(() => window.find('javascript'));
     expect(found).toBe(true);
     await browser.close();
-  })
-})
+  });
+});

@@ -1,7 +1,10 @@
 import React from 'react';
-import { shallow, render, mount } from "enzyme";
-import { configure } from 'enzyme';
+import {
+  shallow, render, mount, configure,
+} from 'enzyme';
+
 import Adapter from 'enzyme-adapter-react-16';
+
 const puppeteer = require('puppeteer');
 
 configure({ adapter: new Adapter() });
