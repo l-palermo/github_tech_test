@@ -58,6 +58,6 @@ With this architecture, the data flow in one way, from the user that inputs the 
 ## Considerations
 
 I am not sure whether saving the user input as a state using the onChange property is the right approach. Even whether the React documentation supports this strategy, it seems very expensive because renders the child component at every typing of the keyboard. This should be better implemented conditionally rendering `FavouriteLanguage` on the change of `state.repos` only. 
-I would have improved the separation of concerns on the `SearchBar` component that takes the user input and fires the fetch on the parent component. With more time, I would have turned the HTML `InputBox` and the `SubmitButton` in two separate components wrapped by `SerachBar` that passes the props to its parent component.
+I would have improved the separation of concerns on the `SearchBar` component that not only takes the user input but also fires `fetch` on the parent component. The HTML `InputBox` and the `SubmitButton` should be turned in two separate components wrapped by `SerachBar` that passes the props to its parent component.
 I have included some edge cases but more could be added, for example, the case of a user with an equal rate of 2 or more languages. The conditionals used for edge cases can be improved.
-I should have also found a better way to 
+I should have also found a better way to mock the nested module in `selectLanguage`.

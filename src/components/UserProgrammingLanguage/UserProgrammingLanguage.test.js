@@ -33,6 +33,6 @@ describe('UserProgrammingLanguage', () => {
       await instance.onHandleFetchRepos();
       expect(functionMock).toHaveBeenCalled();
       expect(wrapper.state('repos')).toEqual('');
-    })
+    });
   });
 });

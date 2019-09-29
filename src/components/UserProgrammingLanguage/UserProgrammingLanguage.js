@@ -21,8 +21,8 @@ class UserProgrammingLanguage extends React.Component {
 
   async onHandleFetchRepos() {
     const repos = await this.props.fetchUserRepos(this.state.userName);
-    if(repos.length === 0) { return this.setState({ repos: '' }) }
-    this.setState({ repos:repos });
+    if (repos.length === 0) { return this.setState({ repos: '' }) }
+    this.setState({ repos: repos });
   }
 
   render() {
@@ -48,7 +48,7 @@ class UserProgrammingLanguage extends React.Component {
         </div>
       </div>
     );
-  };
-};
+  }
+}
 
 export default UserProgrammingLanguage;
