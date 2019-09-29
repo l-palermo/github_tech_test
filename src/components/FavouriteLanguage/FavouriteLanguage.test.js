@@ -1,10 +1,8 @@
 import '../../testHelper';
 import FavouriteLanguage from './FavouriteLanguage';
 
-let languagesRateMock;
 let selectLanguageMock;
 beforeEach(() => {
-  languagesRateMock = jest.fn();
   selectLanguageMock = jest.fn();
 });
 
@@ -13,10 +11,8 @@ describe('FavouriteLanguage', () => {
     it('returns the user favorite programming language', () => {
       selectLanguageMock.mockReturnValue('JavaScript');
       const wrapper = shallow(<FavouriteLanguage
-        languagesRate={languagesRateMock}
         selectLanguage={selectLanguageMock}
       />);
-      expect(languagesRateMock).toHaveBeenCalled();
       expect(selectLanguageMock).toHaveBeenCalled();
       expect(wrapper.text()).toEqual('JavaScript');
     });
@@ -24,7 +20,6 @@ describe('FavouriteLanguage', () => {
     it('returns a message if the user\'s repos do not have language', () => {
       selectLanguageMock.mockReturnValue(undefined);
       const wrapper = shallow(<FavouriteLanguage
-        languagesRate={languagesRateMock}
         selectLanguage={selectLanguageMock}
       />);
       expect(wrapper.text()).toEqual('The user\'s repos have no programming language');

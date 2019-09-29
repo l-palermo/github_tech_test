@@ -1,11 +1,11 @@
 import React from 'react';
 
 function FavouriteLanguage(props) {
+  const { repos } = props;
+
   const language = function () {
-    const { repos } = props;
-    const list = props.languagesRate(repos);
-    const topLanguage = props.selectLanguage(list);
-    if (topLanguage === undefined) { return 'The user\'s repos have no programming language'; }
+    const topLanguage = props.selectLanguage(repos);
+    if (topLanguage === undefined) { return 'The user\'s repos have no programming language' }
     return topLanguage;
   };
 
@@ -14,6 +14,6 @@ function FavouriteLanguage(props) {
       {language()}
     </div>
   );
-}
+};
 
 export default FavouriteLanguage;

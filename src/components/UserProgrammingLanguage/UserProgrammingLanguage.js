@@ -1,7 +1,6 @@
 import React from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import FavouriteLanguage from '../FavouriteLanguage/FavouriteLanguage';
-import languagesRate from '../../modules/languagesRate/languagesRate';
 import selectLanguage from '../../modules/selectLanguage/selectLanguage';
 
 class UserProgrammingLanguage extends React.Component {
@@ -23,7 +22,7 @@ class UserProgrammingLanguage extends React.Component {
   async onHandleFetchRepos() {
     const repos = await this.props.fetchUserRepos(this.state.userName);
     if(repos.length === 0) { return this.setState({ repos: '' }) }
-    this.setState({ repos });
+    this.setState({ repos:repos });
   }
 
   render() {
@@ -40,17 +39,16 @@ class UserProgrammingLanguage extends React.Component {
           <p>The user has no repos</p>
          }
           {this.state.repos.length > 0
-        && (
-        <FavouriteLanguage
-          repos={this.state.repos}
-          languagesRate={languagesRate}
-          selectLanguage={selectLanguage}
-        />
-        )}
+          && (
+          <FavouriteLanguage
+            repos={this.state.repos}
+            selectLanguage={selectLanguage}
+          />
+          )}
         </div>
       </div>
     );
-  }
-}
+  };
+};
 
 export default UserProgrammingLanguage;
