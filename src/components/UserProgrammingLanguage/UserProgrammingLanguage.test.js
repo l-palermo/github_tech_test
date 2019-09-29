@@ -25,7 +25,7 @@ describe('UserProgrammingLanguage', () => {
       expect(functionMock).toHaveBeenCalled();
       expect(wrapper.state('repos')).toEqual([{ repo: 'test' }]);
     });
-    it('handle edge case of user with no repos', async () => {
+    it('handles edge case of user with no repos', async () => {
       const functionMock = jest.fn();
       functionMock.mockReturnValue([]);
       wrapper = shallow(<UserProgrammingLanguage fetchUserRepos={functionMock} />);

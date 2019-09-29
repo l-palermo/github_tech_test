@@ -28,7 +28,7 @@ describe('SearchBar', () => {
   });
 
   describe('handleChangeName', () => {
-    it('pass the event to the parent component method', () => {
+    it('passes the event to the parent component method', () => {
       const onHandleChangeNameMock = jest.fn();
       const wrapper = shallow(<SearchBar onHandleChangeName={onHandleChangeNameMock} />);
       const inputField = wrapper.find({ id: 'user-name' });
