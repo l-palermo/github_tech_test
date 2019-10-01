@@ -29,7 +29,7 @@ describe('FavouriteLanguage', () => {
 
     it('handles edge case of no valid user', () => {
       const wrapper = shallow(<FavouriteLanguage
-        repos={false}
+        repos={'no-user'}
       />);
       expect(wrapper.text()).toEqual('No valid user');
     });

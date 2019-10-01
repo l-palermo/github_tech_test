@@ -3,9 +3,9 @@ export default async function fetchUserRepos(userName) {
   try {
     const reposURL = await fetch(gitHubApi)
       .then((promise) => promise.json()).then((data) => {
-      if (data.items[0] === undefined) { return false };
+      if (data.total_count === 0) { return 'no-user' };
       return data.items[0].repos_url});
-      if (reposURL === false) { return false };
+      if (reposURL === 'no-user') { return reposURL };
     const userRepos = await fetch(reposURL)
       .then((promise) =>  promise.json()).then((data) => data);
     return await userRepos;
