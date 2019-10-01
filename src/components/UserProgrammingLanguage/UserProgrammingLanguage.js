@@ -7,8 +7,7 @@ class UserProgrammingLanguage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: '',
-      repos: [],
+      userName: ''
     };
     this.onHandleChangeName = this.onHandleChangeName.bind(this);
     this.onHandleFetchRepos = this.onHandleFetchRepos.bind(this);
@@ -20,12 +19,13 @@ class UserProgrammingLanguage extends React.Component {
   }
 
   async onHandleFetchRepos() {
+    if (this.state.userName === '') { return }
     const repos = await this.props.fetchUserRepos(this.state.userName);
-    if (repos.length === 0) { return this.setState({ repos: '' }) }
     this.setState({ repos: repos });
   }
 
   render() {
+    
     return (
       <div>
         <div>
@@ -35,10 +35,7 @@ class UserProgrammingLanguage extends React.Component {
           />
         </div>
         <div>
-         {this.state.repos === '' &&
-          <p>The user has no repos</p>
-         }
-          {this.state.repos.length > 0
+          {this.state.repos !== undefined
           && (
           <FavouriteLanguage
             repos={this.state.repos}

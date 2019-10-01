@@ -2,11 +2,12 @@ export default async function fetchUserRepos(userName) {
   const gitHubApi = `https://api.github.com/search/users?q=${userName}`;
   try {
     const reposURL = await fetch(gitHubApi)
-      .then((promise) => promise.json()).then((data) => data.items[0].repos_url);
+      .then((promise) => promise.json()).then((data) => {
+      if (data.items[0] === undefined) { return false };
+      return data.items[0].repos_url});
+      if (reposURL === false) { return false };
     const userRepos = await fetch(reposURL)
-      .then((promise) => promise.json()).then((data) => data);
+      .then((promise) =>  promise.json()).then((data) => data);
     return await userRepos;
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) { return console.log(err) }
 }

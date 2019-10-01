@@ -7,7 +7,9 @@ beforeEach(() => {
 });
 
 describe('UserProgrammingLanguage', () => {
+  
   describe('onHandleChangeName', () => {
+
     it('holds the user\'s name as state', () => {
       const instance = wrapper.instance();
       const eventMock = { target: { value: 'test' } };
@@ -15,24 +17,28 @@ describe('UserProgrammingLanguage', () => {
       expect(wrapper.state('userName')).toEqual('test');
     });
   });
+
   describe('onHandleFetchRepos', () => {
+
     it('holds data from github Api as state', async () => {
       const functionMock = jest.fn();
       functionMock.mockReturnValue([{ repo: 'test' }]);
       wrapper = shallow(<UserProgrammingLanguage fetchUserRepos={functionMock} />);
       const instance = wrapper.instance();
+      instance.state.userName = 'test'
       await instance.onHandleFetchRepos();
       expect(functionMock).toHaveBeenCalled();
       expect(wrapper.state('repos')).toEqual([{ repo: 'test' }]);
     });
-    it('handles edge case of user with no repos', async () => {
+
+    it('handles edge case of no input', async () => {
       const functionMock = jest.fn();
-      functionMock.mockReturnValue([]);
-      wrapper = shallow(<UserProgrammingLanguage fetchUserRepos={functionMock} />);
+      wrapper = shallow(<UserProgrammingLanguage
+        fetchUserRepos={functionMock} />);
       const instance = wrapper.instance();
+      instance.state.userName = ''
       await instance.onHandleFetchRepos();
-      expect(functionMock).toHaveBeenCalled();
-      expect(wrapper.state('repos')).toEqual('');
+      expect(functionMock).not.toHaveBeenCalled();
     });
   });
 });
