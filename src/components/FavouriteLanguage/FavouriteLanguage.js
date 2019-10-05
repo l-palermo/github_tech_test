@@ -1,12 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function FavouriteLanguage(props) {
-  const { repos } = props;
+function FavouriteLanguage({ repos, selectLanguage }) {
 
   const language = function() {
     if (repos === 'no-user') {return 'No valid user' };
     if (repos.length === 0) { return 'The user has no repos'};
-    const topLanguage = props.selectLanguage(repos);
+    const topLanguage = selectLanguage(repos);
     if (topLanguage === undefined) { return 'The user\'s repos have no programming language' }
     return topLanguage;
   };
@@ -16,6 +16,11 @@ function FavouriteLanguage(props) {
       {language()}
     </div>
   )
+}
+
+FavouriteLanguage.propTypes = {
+  repos: PropTypes.array.isRequired,
+  selectLanguage: PropTypes.func.isRequired
 }
 
 export default FavouriteLanguage;
