@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import '../testHelper';
 import fetch from '../modules/fetchUserRepos/fetchMock';
 

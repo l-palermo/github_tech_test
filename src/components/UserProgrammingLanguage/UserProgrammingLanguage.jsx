@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SearchBar from '../SearchBar/SearchBar';
 import FavouriteLanguage from '../FavouriteLanguage/FavouriteLanguage';
 import selectLanguage from '../../modules/selectLanguage/selectLanguage';
@@ -7,38 +8,31 @@ class UserProgrammingLanguage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: ''
     };
-    this.onHandleChangeName = this.onHandleChangeName.bind(this);
     this.onHandleFetchRepos = this.onHandleFetchRepos.bind(this);
   }
 
-  onHandleChangeName(event) {
-    const name = event.target.value;
-    this.setState({ userName: name });
-  }
-
-  async onHandleFetchRepos() {
-    if (this.state.userName === '') { return }
-    const repos = await this.props.fetchUserRepos(this.state.userName);
-    this.setState({ repos: repos });
+  async onHandleFetchRepos(userName) {
+    if (userName === '') { return; }
+    // eslint-disable-next-line react/destructuring-assignment
+    const repos = await this.props.fetchUserRepos(userName);
+    this.setState({ repos });
   }
 
   render() {
-    
+    const { state } = this;
     return (
       <div>
         <div>
           <SearchBar
-            onHandleChangeName={this.onHandleChangeName}
             onHandleFetchRepos={this.onHandleFetchRepos}
           />
         </div>
         <div>
-          {this.state.repos !== undefined
+          {state.repos !== undefined
           && (
           <FavouriteLanguage
-            repos={this.state.repos}
+            repos={state.repos}
             selectLanguage={selectLanguage}
           />
           )}
@@ -47,5 +41,9 @@ class UserProgrammingLanguage extends React.Component {
     );
   }
 }
+
+UserProgrammingLanguage.propTypes = {
+  fetchUserRepos: PropTypes.func.isRequired,
+};
 
 export default UserProgrammingLanguage;

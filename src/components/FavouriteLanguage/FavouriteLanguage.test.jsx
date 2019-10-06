@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable react/react-in-jsx-scope */
 import '../../testHelper';
 import FavouriteLanguage from './FavouriteLanguage';
 
@@ -11,7 +13,7 @@ describe('FavouriteLanguage', () => {
     it('returns the user favorite programming language', () => {
       selectLanguageMock.mockReturnValue('JavaScript');
       const wrapper = shallow(<FavouriteLanguage
-        repos={'test'}
+        repos="test"
         selectLanguage={selectLanguageMock}
       />);
       expect(selectLanguageMock).toHaveBeenCalled();
@@ -29,7 +31,7 @@ describe('FavouriteLanguage', () => {
 
     it('handles edge case of no valid user', () => {
       const wrapper = shallow(<FavouriteLanguage
-        repos={'no-user'}
+        repos="no-user"
       />);
       expect(wrapper.text()).toEqual('No valid user');
     });
@@ -37,7 +39,7 @@ describe('FavouriteLanguage', () => {
     it('returns a message if the user\'s repos do not have language', () => {
       selectLanguageMock.mockReturnValue(undefined);
       const wrapper = shallow(<FavouriteLanguage
-        repos={'test'}
+        repos="test"
         selectLanguage={selectLanguageMock}
       />);
       expect(wrapper.text()).toEqual('The user\'s repos have no programming language');
