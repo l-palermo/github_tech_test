@@ -13,7 +13,7 @@ describe('FavouriteLanguage', () => {
     it('returns the user favorite programming language', () => {
       selectLanguageMock.mockReturnValue('JavaScript');
       const wrapper = shallow(<FavouriteLanguage
-        repos="test"
+        repos={[{ id: 1 }]}
         selectLanguage={selectLanguageMock}
       />);
       expect(selectLanguageMock).toHaveBeenCalled();
@@ -21,17 +21,17 @@ describe('FavouriteLanguage', () => {
     });
 
     it('returns a message if the user has no repos', () => {
-      selectLanguageMock.mockReturnValue(undefined);
       const wrapper = shallow(<FavouriteLanguage
         repos={[]}
         selectLanguage={selectLanguageMock}
       />);
-      expect(wrapper.text()).toEqual('The user has no repos');
+      expect(wrapper.text()).toEqual('The user has no repos');
     });
 
     it('handles edge case of no valid user', () => {
       const wrapper = shallow(<FavouriteLanguage
-        repos="no-user"
+        repos={[{ user: 'no-user' }]}
+        selectLanguage={selectLanguageMock}
       />);
       expect(wrapper.text()).toEqual('No valid user');
     });
@@ -39,7 +39,7 @@ describe('FavouriteLanguage', () => {
     it('returns a message if the user\'s repos do not have language', () => {
       selectLanguageMock.mockReturnValue(undefined);
       const wrapper = shallow(<FavouriteLanguage
-        repos="test"
+        repos={[{ id: 1 }]}
         selectLanguage={selectLanguageMock}
       />);
       expect(wrapper.text()).toEqual('The user\'s repos have no programming language');

@@ -8,6 +8,7 @@ class UserProgrammingLanguage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      repos: [{}],
     };
     this.onHandleFetchRepos = this.onHandleFetchRepos.bind(this);
   }
@@ -29,13 +30,10 @@ class UserProgrammingLanguage extends React.Component {
           />
         </div>
         <div>
-          {state.repos !== undefined
-          && (
           <FavouriteLanguage
             repos={state.repos}
             selectLanguage={selectLanguage}
           />
-          )}
         </div>
       </div>
     );

@@ -22,7 +22,7 @@ describe('F.P.L', () => {
         } else if (url === 'https://api.github.com/users/test/repos') {
           request.respond({
             body: JSON.stringify(
-              [{ language: 'ruby' }, { language: 'javascript' }, { language: 'javascript' }],
+              [{ id: 1, language: 'ruby' }, { id: 2, language: 'javascript' }, { id: 3, language: 'javascript' }],
             ),
           });
         }

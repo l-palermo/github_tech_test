@@ -2,19 +2,36 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function FavouriteLanguage({ repos, selectLanguage }) {
-  const language = function language() {
-    if (repos === 'no-user') { return 'No valid user'; }
-    if (repos.length === 0) { return 'The user has no repos'; }
-    const topLanguage = selectLanguage(repos);
-    if (topLanguage === undefined) { return 'The user\'s repos have no programming language'; }
-    return topLanguage;
-  };
+  if (repos.length === 0) {
+    return (
+      <div id="favourite-langauge">
+        The user has no repos
+      </div>
+    );
+  }
 
-  return (
-    <div id="favourite-langauge">
-      {language()}
-    </div>
-  );
+  if (repos[0].user === 'no-user') {
+    return (
+      <div id="favourite-langauge">
+        No valid user
+      </div>
+    );
+  }
+
+  if (repos[0].id !== undefined) {
+    const language = function language() {
+      const topLanguage = selectLanguage(repos);
+      if (topLanguage === undefined) { return 'The user\'s repos have no programming language'; }
+      return topLanguage;
+    };
+
+    return (
+      <div id="favourite-langauge">
+        {language()}
+      </div>
+    );
+  }
+  return null;
 }
 
 FavouriteLanguage.propTypes = {
