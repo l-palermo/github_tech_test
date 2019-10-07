@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from '../SearchBar/SearchBar';
-import FavouriteLanguage from '../FavouriteLanguage/FavouriteLanguage';
-import selectLanguage from '../../modules/selectLanguage/selectLanguage';
+import FilterDataForLanguage from '../FilterDataForLanguage/FilterDataForLanguage';
 
 class UserProgrammingLanguage extends React.Component {
   constructor(props) {
@@ -30,9 +29,8 @@ class UserProgrammingLanguage extends React.Component {
           />
         </div>
         <div>
-          <FavouriteLanguage
+          <FilterDataForLanguage
             repos={state.repos}
-            selectLanguage={selectLanguage}
           />
         </div>
       </div>

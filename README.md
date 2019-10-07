@@ -25,6 +25,7 @@ Move to the `TECH_TEST` folder and type:
 One fired the server move to the webpage and type the GitHub user name and click `Submit`
 The page will show the predominant programming language of the GitHub user.
 The application shows a helpful message in case of:
+- no valid user
 - user has no language in the repositories.
 - user has no repositories. 
 
@@ -43,7 +44,7 @@ __App.__ A high-level parent component that at the moment just work as a runner 
 
 __UserProgrammingLanguage.__ The common owner component renders the other two child component `SearchBar` and `FavouriteLanguage`, fetch the main data from the API and holds states.
 
-__SearchBar.__ This child component takes the user input and passes it to the parent component `UserProgrammingLanguage` that save it as a state. When the user clicks submit, calls the method on the parent component that fetches the data from the API and saves it as a state.
+__SearchBar.__ This child component takes the user input and saves it using hooks, this will be passed then to the parent component `UserProgrammingLanguage`. When the user clicks submit, calls the method on the parent component that fetches the data from the API and saves it as a state.
 
 __FavouriteLanguage.__ This child component listens to the change of state of `UserProgrammingLanguage` and renders the user's favourite language.
 
