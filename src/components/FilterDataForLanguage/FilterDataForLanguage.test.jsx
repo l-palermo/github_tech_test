@@ -20,7 +20,7 @@ describe('FilterDataForLanguage', () => {
   });
 
   it('renders FavouriteLanguage component', () => {
-    const wrapper = mount(<FilterDataForLanguage
+    const wrapper = shallow(<FilterDataForLanguage
       repos={[{ id: 1 }]}
     />);
     expect(wrapper.find(FavouriteLanguage)).toHaveLength(1);
