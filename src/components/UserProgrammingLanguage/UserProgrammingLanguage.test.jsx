@@ -2,6 +2,8 @@
 /* eslint-disable no-undef */
 import '../../testHelper';
 import UserProgrammingLanguage from './UserProgrammingLanguage';
+import SearchBar from '../SearchBar/SearchBar';
+import FilterDataForLanguage from '../FilterDataForLanguage/FilterDataForLanguage';
 
 let wrapper;
 let instance;
@@ -14,6 +16,14 @@ beforeEach(() => {
 });
 
 describe('UserProgrammingLanguage', () => {
+  it('renders the SerachBar component', () => {
+    expect(wrapper.find(SearchBar)).toHaveLength(1);
+  });
+
+  it('renders the FilterDataForLanguage component', () => {
+    expect(wrapper.find(FilterDataForLanguage)).toHaveLength(1);
+  });
+
   describe('onHandleFetchRepos', () => {
     it('holds data from github Api as state', async () => {
       instance.state.userName = 'test';
