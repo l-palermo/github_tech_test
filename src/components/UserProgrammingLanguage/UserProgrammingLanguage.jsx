@@ -14,8 +14,9 @@ class UserProgrammingLanguage extends React.Component {
 
   async onHandleFetchRepos(userName) {
     if (userName === '') { return; }
-    // eslint-disable-next-line react/destructuring-assignment
-    const repos = await this.props.fetchUserRepos(userName);
+    const { props } = this;
+    const repos = await props.fetchUserRepos(userName);
+    /*   const repos = await this.props.fetchUserRepos(userName); */
     this.setState({ repos });
   }
 
