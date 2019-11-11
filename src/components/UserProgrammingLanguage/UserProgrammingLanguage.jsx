@@ -16,7 +16,6 @@ class UserProgrammingLanguage extends React.Component {
     if (userName === '') { return; }
     const { props } = this;
     const repos = await props.fetchUserRepos(userName);
-    /*   const repos = await this.props.fetchUserRepos(userName); */
     this.setState({ repos });
   }
 

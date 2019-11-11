@@ -1,6 +1,6 @@
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable no-undef */
 import '../../testHelper';
+import React from 'react';
+import { shallow } from 'enzyme';
 import UserProgrammingLanguage from './UserProgrammingLanguage';
 import SearchBar from '../SearchBar/SearchBar';
 import FilterDataForLanguage from '../FilterDataForLanguage/FilterDataForLanguage';

@@ -1,6 +1,7 @@
-/* eslint-disable no-undef */
 import '../testHelper';
 import fetch from '../modules/fetchUserRepos/fetchMock';
+
+const puppeteer = require('puppeteer');
 
 describe('F.P.L', () => {
   it('The user input a user\'s name and see the user favourite language', async () => {

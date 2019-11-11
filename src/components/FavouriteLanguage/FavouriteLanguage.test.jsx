@@ -1,6 +1,6 @@
-/* eslint-disable no-undef */
-/* eslint-disable react/react-in-jsx-scope */
 import '../../testHelper';
+import React from 'react';
+import { shallow } from 'enzyme';
 import FavouriteLanguage from './FavouriteLanguage';
 
 let selectLanguageMock;

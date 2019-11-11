@@ -1,11 +1,7 @@
-/* eslint-disable no-undef */
-/* eslint-disable react/react-in-jsx-scope */
 import '../../testHelper';
+import { shallow } from 'enzyme';
+import React from 'react';
 import SearchBar from './SearchBar';
-
-/* const useStateMock = jest.fn();
-const useStateSpy = jest.spyOn(React, 'useState');
-useStateSpy.mockImplementation((name) => [name, useStateMock]); */
 
 let wrapper;
 const onHandleFetchReposMock = jest.fn();
@@ -28,16 +24,8 @@ describe('SearchBar', () => {
 
   describe('handleChangeName', () => {
     it('passes the event to the parent component method', () => {
-/*       const onHandleFetchReposMock = jest.fn();
-      const wrapper = shallow(<SearchBar
-        onHandleFetchRepos={onHandleFetchReposMock}
-      />);
-      const useStateMock = jest.fn();
-      const useStateSpy = jest.spyOn(React, 'useState');
-      useStateSpy.mockImplementation((name) => [name, useStateMock]); */
       const inputField = wrapper.find({ id: 'user-name' });
       inputField.simulate('change', { target: { value: 'test' } });
-/*       expect(useStateMock).toHaveBeenCalled(); */
     });
   });
 
